@@ -2,6 +2,9 @@ require 'sinatra'
 require 'csv'
 require_relative 'helpers'
 require 'pry'
+require 'net/http'
+require 'uri'
+require 'time'
 
 get '/' do
   @articles = make_data().reverse
@@ -27,3 +30,4 @@ post '/submit' do
     save_post(@author, @title, @url, @desc)
   end
 end
+

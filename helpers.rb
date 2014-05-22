@@ -19,3 +19,17 @@ def check_url(url)
   end
   false
 end
+
+def check_desc(desc)
+  if desc.length < 20
+    return true
+  end
+  false
+end
+
+def save_post(array)
+  array << Time.now
+  File.open('data/articles.csv', 'a') do |file|
+    file.puts(array.join(","))
+  end
+end
