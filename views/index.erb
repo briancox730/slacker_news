@@ -1,11 +1,13 @@
 <div class="section">
-  <div class="number">
-    1.<img src="images/grayarrow.gif" class="arrow">
-  </div>
   <div class="article">
-    <a href="https://www.firebase.com/blog/2013-08-15-firebase-leaves-beta-today.html">Firebase Leaves Beta Today</a> <span class="website">(firebase.com)</span>
+    <% @articles.each_with_index do |article, i| %>
+    <span class="number"><%= i+1 %>.<img src="images/grayarrow.gif" class="arrow"></span>
+      <a href="<%= article[:url] %>"><%= article[:title] %></a> <span class="website">(<%=
+        (article[:url].match(/[\w]+\.[a-zA-Z0-9]+\.[a-zA-Z]{2,3}\.?[a-zA-Z]{0,2}/)[0]).downcase  %>)</span>
   </div>
   <div class="details">
-    63 points by lyime 56 minutes ago | 17 comments
+    Submitted by <%= article[:author] + " " + article[:created] + " minutes ago" %>
+    <!-- Add time logic -->
   </div>
+    <% end %>
 </div>

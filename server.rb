@@ -4,6 +4,6 @@ require_relative 'helpers'
 require 'pry'
 
 get '/' do
-  @articles = make_data()
+  @articles = make_data().reverse
   erb :index
 end
