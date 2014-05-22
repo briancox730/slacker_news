@@ -1,13 +1,13 @@
-<div class="section">
-  <div class="article">
-    <% @articles.each_with_index do |article, i| %>
-    <span class="number"><%= i+1 %>.<img src="images/grayarrow.gif" class="arrow"></span>
+<% @articles.each_with_index do |article, i| %>
+  <div class="section">
+    <div class="article">
+      <span class="number"><%= i+1 %>.<img src="images/grayarrow.gif" class="arrow"></span>
       <a href="<%= article[:url] %>"><%= article[:title] %></a> <span class="website">(<%=
-        (article[:url].match(/[\w]+\.[a-zA-Z0-9]+\.[a-zA-Z]{2,3}\.?[a-zA-Z]{0,2}/)[0]).downcase  %>)</span>
+          (article[:url].match(/[\w]+\.[a-zA-Z0-9]+\.[a-zA-Z]{2,3}\.?[a-zA-Z]{0,2}/)[0]).downcase  %>)</span>
+    </div>
+    <div class="details">
+      <% time = (Time.parse(Time.now.to_s) - Time.parse(article[:created]))/60 %>
+      Submitted by <%= article[:author] + " " + time.round.to_s + " minutes ago" %>
+    </div>
   </div>
-  <div class="details">
-    Submitted by <%= article[:author] + " " + article[:created] + " minutes ago" %>
-    <!-- Add time logic -->
-  </div>
-    <% end %>
-</div>
+<% end %>

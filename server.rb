@@ -27,7 +27,8 @@ post '/submit' do
   if check_blanks(@author, @title, @url, @desc) && check_url(@url) && check_desc(@desc)
     erb :'submit/submit'
   else
-    save_post(@author, @title, @url, @desc)
+    save_post([@author, @title, @url, @desc])
+    redirect '/'
   end
 end
 

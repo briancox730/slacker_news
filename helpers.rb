@@ -7,7 +7,7 @@ def make_data()
 end
 
 def check_blanks(author, title, url, desc)
-  if author == "" || title == "" || url == "" desc == ""
+  if author == "" || title == "" || url == "" || desc == ""
     return true
   end
   false
