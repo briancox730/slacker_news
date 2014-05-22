@@ -91,3 +91,24 @@ nav a {
   padding-left: 36px;
 }
 
+.submit {
+  font-size: 10pt;
+  color: #828282;
+  background-color: #f6f6ef;
+  padding: 8px;
+  margin: 0;
+  clear: both;
+}
+
+.submit ul {
+  padding: 0;
+  margin: 0;
+}
+
+.submit li {
+  list-style-type: none;
+}
+
+.submit textarea {
+  vertical-align: top;
+}

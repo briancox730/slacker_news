@@ -24,6 +24,16 @@ def check_url(url)
   false
 end
 
+def check_dupurl(url, articles)
+  articles.each do |line|
+    binding.pry
+    if url == line[:url]
+      return true
+    end
+  end
+  false
+end
+
 def check_desc(desc)
   if desc.length < 20
     return true

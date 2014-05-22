@@ -20,11 +20,12 @@ get '/submit' do
 end
 
 post '/submit' do
+  @articles = make_data()
   @author = params["author"]
   @title = params["title"]
   @url = params["url"]
   @desc = params["desc"]
-  if check_blanks(@author, @title, @url, @desc) && check_url(@url) && check_desc(@desc)
+  if check_blanks(@author, @title, @url, @desc) || check_url(@url) || check_desc(@desc) || check_dupurl(@url, @articles)
     erb :'submit/submit'
   else
     save_post([@author, @title, @url, @desc])

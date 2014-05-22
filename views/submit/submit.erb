@@ -1,10 +1,10 @@
-<div>
+<div class="submit">
   <ul>
     <form action="/submit" method="post">
       <li>Author: <input type="text" name="author" value="<%= @author %>" size="50"></li>
       <li>Title: <input type="text" name="title" value="<%= @title %>" size="50"></li>
       <li>URL: <input type="text" name="url" value="<%= @url %>" size="50"></li>
-      <li>Description: <textarea name="desc" value="<%= @desc %>" rows="10" cols="70"></textarea></li>
+      <li>Description: <textarea name="desc" rows="10" cols="70"><%= @desc %></textarea></li>
       <li><input type="submit"></li>
     </form>
   </ul>
