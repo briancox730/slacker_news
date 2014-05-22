@@ -16,6 +16,7 @@ get '/submit' do
   @title = ""
   @url = ""
   @desc = ""
+  @resubmit = false
   erb :'submit/submit'
 end
 
@@ -26,10 +27,10 @@ post '/submit' do
   @url = params["url"]
   @desc = params["desc"]
   if check_blanks(@author, @title, @url, @desc) || check_url(@url) || check_desc(@desc) || check_dupurl(@url, @articles)
+    @resubmit = true
     erb :'submit/submit'
   else
     save_post([@author, @title, @url, @desc])
     redirect '/'
   end
 end
-

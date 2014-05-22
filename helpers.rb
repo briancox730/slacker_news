@@ -26,7 +26,6 @@ end
 
 def check_dupurl(url, articles)
   articles.each do |line|
-    binding.pry
     if url == line[:url]
       return true
     end

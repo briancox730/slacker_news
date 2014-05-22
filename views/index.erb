@@ -2,8 +2,7 @@
   <div class="section">
     <div class="article">
       <span class="number"><%= i+1 %>.<img src="images/grayarrow.gif" class="arrow"></span>
-      <a href="<%= article[:url] %>"><%= article[:title] %></a> <span class="website">(<%=
-          (article[:url].match(/[\w]+\.[a-zA-Z0-9]+\.[a-zA-Z]{2,3}\.?[a-zA-Z]{0,2}/)[0]).downcase  %>)</span>
+      <a href="<%= article[:url] %>" target="_blank"><%= article[:title] %></a> <span class="website">(<%= URI(article[:url]).host.downcase  %>)</span>
     </div>
     <div class="details">
       <% time = (Time.parse(Time.now.to_s) - Time.parse(article[:created]))/60 %>

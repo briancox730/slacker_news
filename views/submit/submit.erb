@@ -1,10 +1,25 @@
 <div class="submit">
   <ul>
     <form action="/submit" method="post">
-      <li><div class="spacer">Author: </div><input type="text" name="author" value="<%= @author %>" size="50"></li>
-      <li><div class="spacer">Title: </div><input type="text" name="title" value="<%= @title %>" size="50"></li>
-      <li><div class="spacer">URL: </div><input type="text" name="url" value="<%= @url %>" size="50"></li>
-      <li><div class="spacer">Description: </div><textarea name="desc" rows="10" cols="60"><%= @desc %></textarea></li>
+      <li><div class="spacer">Author: </div><input type="text" name="author" value="<%= @author %>" size="50">
+        <% if @resubmit == true && @author == "" %>
+          <div class="error"> *Required field </div>
+        <% end %></li>
+      <li><div class="spacer">Title: </div><input type="text" name="title" value="<%= @title %>" size="50">
+        <% if @resubmit == true && @title == "" %>
+          <div class="error"> *Required field </div>
+        <% end %></li>
+      <li><div class="spacer">URL: </div><input type="text" name="url" value="<%= @url %>" size="50">
+        <% if @resubmit == true && @url == "" %>
+          <div class="error"> *Required field </div>
+        <% end %>
+        <% if @url != "" && check_dupurl(@url, @articles) == true %>
+          <div class="error"> *URL has already been submitted </div>
+        <% end %></li>
+      <li><div class="spacer">Description: </div><textarea name="desc" rows="10" cols="60"><%= @desc %></textarea>
+        <% if @resubmit == true && @desc.length < 20 %>
+          <div class="error"> *Must be at least 20 characters </div>
+        <% end %></li>
       <li><div class="spacer"><input type="submit"></div></li>
     </form>
   </ul>

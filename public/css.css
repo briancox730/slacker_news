@@ -117,3 +117,9 @@ nav a {
   display: inline-block;
   width: 90px;
 }
+
+.error {
+  display: inline-block;
+  font-size: 8pt;
+  color: red;
+}
