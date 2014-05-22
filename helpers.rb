@@ -40,6 +40,20 @@ def check_desc(desc)
   false
 end
 
+def make_time(time)
+  if time < 60
+    return time.to_s + " minutes ago"
+  elsif time >= 60 && time < 1440
+    return (time/60).round.to_s + " hours ago"
+  elsif time >= 1440 && time < 10080
+    return (time/1440).round.to_s + " days ago"
+  elsif time >= 10080 && time < 43200
+    return (time/10080).round.to_s + " weeks ago"
+  elsif time > 43200
+    return (time/518400).round.to_s + " years ago"
+  end
+end
+
 def save_post(array)
   array << Time.now
   File.open('data/articles.csv', 'a') do |file|

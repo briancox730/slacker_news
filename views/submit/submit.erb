@@ -15,6 +15,9 @@
         <% end %>
         <% if @url != "" && check_dupurl(@url, @articles) == true %>
           <div class="error"> *URL has already been submitted </div>
+        <% end %>
+        <% if @url != "" && check_url(@url) == true %>
+          <div class="error"> *URL is invalid </div>
         <% end %></li>
       <li><div class="spacer">Description: </div><textarea name="desc" rows="10" cols="60"><%= @desc %></textarea>
         <% if @resubmit == true && @desc.length < 20 %>
