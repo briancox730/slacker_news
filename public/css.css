@@ -97,7 +97,6 @@ nav a {
   background-color: #f6f6ef;
   padding: 8px;
   margin: 0;
-  clear: both;
 }
 
 .submit ul {
@@ -111,4 +110,10 @@ nav a {
 
 .submit textarea {
   vertical-align: top;
+}
+
+.spacer {
+  text-align: right;
+  display: inline-block;
+  width: 90px;
 }
