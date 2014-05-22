@@ -14,7 +14,11 @@ def check_blanks(author, title, url, desc)
 end
 
 def check_url(url)
-  if Net::HTTP.get_response(URI.parse(url)).code != "200"
+  begin
+    if Net::HTTP.get_response(URI.parse(url)).code != "200"
+      return true
+    end
+  rescue
     return true
   end
   false
