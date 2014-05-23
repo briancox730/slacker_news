@@ -1,7 +1,6 @@
 require 'sinatra'
 require 'csv'
 require_relative 'helpers'
-require 'pry'
 require 'net/http'
 require 'uri'
 require 'time'
