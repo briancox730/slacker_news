@@ -1,11 +1,4 @@
-require 'sinatra'
-require 'csv'
 require_relative 'helpers'
-require 'net/http'
-require 'uri'
-require 'time'
-require 'redis'
-require 'json'
 
 get '/' do
   @articles = find_articles() #.sort_by { |rowhash| (Time.parse(Time.now.to_s) - Time.parse(rowhash[:created])).to_i }
