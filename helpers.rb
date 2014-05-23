@@ -1,3 +1,9 @@
+require 'net/http'
+require 'csv'
+require 'time'
+require 'uri'
+require 'json'
+
 def get_connection
   if ENV.has_key?("REDISCLOUD_URL")
     Redis.new(url: ENV["REDISCLOUD_URL"])

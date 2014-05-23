@@ -1,3 +1,5 @@
+require 'sinatra'
+
 require_relative 'helpers'
 
 get '/' do
