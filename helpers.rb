@@ -1,3 +1,31 @@
+def get_connection
+  if ENV.has_key?("REDISCLOUD_URL")
+    Redis.new(url: ENV["REDISCLOUD_URL"])
+  else
+    Redis.new
+  end
+end
+
+def find_articles
+  redis = get_connection
+  serialized_articles = redis.lrange("slacker:articles", 0, -1)
+
+  articles = []
+
+  serialized_articles.each do |article|
+    articles << JSON.parse(article, symbolize_names: true)
+  end
+
+  articles
+end
+
+def save_article(author, url, title, description)
+  article = { author: author, url: url, title: title, description: description, created: Time.now }
+
+  redis = get_connection
+  redis.rpush("slacker:articles", article.to_json)
+end
+
 def make_data()
   articles = []
   CSV.foreach('data/articles.csv', headers: true, header_converters: :symbol) do |row|

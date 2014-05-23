@@ -5,9 +5,11 @@ require 'pry'
 require 'net/http'
 require 'uri'
 require 'time'
+require 'redis'
+require 'json'
 
 get '/' do
-  @articles = make_data().sort_by { |rowhash| (Time.parse(Time.now.to_s) - Time.parse(rowhash[:created])).to_i }
+  @articles = find_articles() #.sort_by { |rowhash| (Time.parse(Time.now.to_s) - Time.parse(rowhash[:created])).to_i }
   erb :index
 end
 
@@ -30,7 +32,7 @@ post '/submit' do
     @resubmit = true
     erb :'submit/submit'
   else
-    save_post([@author, @title, @url, @desc])
+    save_article(@author, @url, @title, @desc)
     redirect '/'
   end
 end
