@@ -54,6 +54,11 @@ def make_time(time)
   end
 end
 
+def strip_url(url)
+  url = url.split(".")
+  url[-2] + "." + url[-1]
+end
+
 def save_post(array)
   array << Time.now
   File.open('data/articles.csv', 'a') do |file|
