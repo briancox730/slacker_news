@@ -3,6 +3,7 @@ require 'csv'
 require 'time'
 require 'uri'
 require 'json'
+require 'redis'
 
 def get_connection
   if ENV.has_key?("REDISCLOUD_URL")
