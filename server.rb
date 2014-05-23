@@ -7,7 +7,7 @@ require 'uri'
 require 'time'
 
 get '/' do
-  @articles = make_data().reverse
+  @articles = make_data().sort_by { |rowhash| (Time.parse(Time.now.to_s) - Time.parse(rowhash[:created])).to_i }
   erb :index
 end
 
