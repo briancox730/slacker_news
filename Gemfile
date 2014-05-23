@@ -1,9 +1,6 @@
 source 'https://rubygems.org'
 
-require 'sinatra'
-require 'csv'
-require 'net/http'
-require 'uri'
-require 'time'
-require 'redis'
-require 'json'
+ruby '2.0.0'
+
+gem 'sinatra'
+gem 'redis'
