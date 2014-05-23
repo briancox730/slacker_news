@@ -30,16 +30,16 @@ def save_article(author, url, title, description)
   article = { author: author, url: url, title: title, description: description, created: Time.now }
 
   redis = get_connection
-  redis.rpush("slacker:articles", article.to_json)
+  redis.lpush("slacker:articles", article.to_json)
 end
 
-def make_data()
-  articles = []
-  CSV.foreach('data/articles.csv', headers: true, header_converters: :symbol) do |row|
-    articles << row.to_hash
-  end
-  articles
-end
+# def make_data()
+#   articles = []
+#   CSV.foreach('data/articles.csv', headers: true, header_converters: :symbol) do |row|
+#     articles << row.to_hash
+#   end
+#   articles
+# end
 
 def check_blanks(author, title, url, desc)
   if author == "" || title == "" || url == "" || desc == ""
@@ -94,9 +94,9 @@ def strip_url(url)
   url[-2] + "." + url[-1]
 end
 
-def save_post(array)
-  array << Time.now
-  File.open('data/articles.csv', 'a') do |file|
-    file.puts(array.join(","))
-  end
-end
+# def save_post(array)
+#   array << Time.now
+#   File.open('data/articles.csv', 'a') do |file|
+#     file.puts(array.join(","))
+#   end
+# end

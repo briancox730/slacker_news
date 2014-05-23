@@ -3,7 +3,7 @@ require 'sinatra'
 require_relative 'helpers'
 
 get '/' do
-  @articles = find_articles() #.sort_by { |rowhash| (Time.parse(Time.now.to_s) - Time.parse(rowhash[:created])).to_i }
+  @articles = find_articles()
   erb :index
 end
 
@@ -17,7 +17,7 @@ get '/submit' do
 end
 
 post '/submit' do
-  @articles = make_data()
+  @articles = find_articles()
   @author = params["author"]
   @title = params["title"]
   @url = params["url"]
